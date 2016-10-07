@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRegistration", "ConferenceRegistration\ConferenceRegistration.csproj", "{F24753D8-7CB6-4B97-8239-DF6584087322}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRegistration.RhinoMocks.Tests", "ConferenceRegistration\Tests\ConferenceRegistration.Tests\ConferenceRegistration.RhinoMocks.Tests.csproj", "{CCEC5DE6-2539-4646-A920-5166BDA286C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRegistration.Moq.Tests", "ConferenceRegistration.Moq.Tests\ConferenceRegistration.Moq.Tests.csproj", "{A2746DDD-4D9F-4368-9755-A92B2F221C94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRegistration.NSubstitute.Tests", "ConferenceRegistration.NSubstitute.Tests\ConferenceRegistration.NSubstitute.Tests.csproj", "{CCA374C3-A9F4-4887-AFEE-85FA5B01A985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialMockExample", "PartialMockExample\PartialMockExample.csproj", "{8C79C094-5F46-48C3-8F4F-8BE3302D26EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialMockExample.NSubstitue.Tests", "PartialMockExample.NSubstitues.Tests\PartialMockExample.NSubstitue.Tests.csproj", "{1A797EC0-8039-46FB-A803-A12677CB0B53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F24753D8-7CB6-4B97-8239-DF6584087322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24753D8-7CB6-4B97-8239-DF6584087322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24753D8-7CB6-4B97-8239-DF6584087322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24753D8-7CB6-4B97-8239-DF6584087322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCEC5DE6-2539-4646-A920-5166BDA286C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCEC5DE6-2539-4646-A920-5166BDA286C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCEC5DE6-2539-4646-A920-5166BDA286C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCEC5DE6-2539-4646-A920-5166BDA286C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2746DDD-4D9F-4368-9755-A92B2F221C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2746DDD-4D9F-4368-9755-A92B2F221C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2746DDD-4D9F-4368-9755-A92B2F221C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2746DDD-4D9F-4368-9755-A92B2F221C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA374C3-A9F4-4887-AFEE-85FA5B01A985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA374C3-A9F4-4887-AFEE-85FA5B01A985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA374C3-A9F4-4887-AFEE-85FA5B01A985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA374C3-A9F4-4887-AFEE-85FA5B01A985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C79C094-5F46-48C3-8F4F-8BE3302D26EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C79C094-5F46-48C3-8F4F-8BE3302D26EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C79C094-5F46-48C3-8F4F-8BE3302D26EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C79C094-5F46-48C3-8F4F-8BE3302D26EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A797EC0-8039-46FB-A803-A12677CB0B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A797EC0-8039-46FB-A803-A12677CB0B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A797EC0-8039-46FB-A803-A12677CB0B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A797EC0-8039-46FB-A803-A12677CB0B53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
