@@ -7,9 +7,10 @@ namespace ConferenceRegistration.RhinoMocks.Tests
 	[TestFixture]
 	class RegistrationServiceTests
 	{
-		IFeeCalculator _feeCalculator;
-		IEmailSender _emailSender;
-		IPaymentProcessor _paymentProcessor;
+		private IFeeCalculator _feeCalculator;
+		private IEmailSender _emailSender;
+		private IPaymentProcessor _paymentProcessor;
+        private IRegistrationRepository _repository;
 
 		[OneTimeSetUp]
 		public void FixtureSetup()
@@ -34,7 +35,14 @@ namespace ConferenceRegistration.RhinoMocks.Tests
 			//we will define return values in each test for this stub.
 			_paymentProcessor = MockRepository.GenerateStub<IPaymentProcessor>();
 
-		}
+            _repository = MockRepository.GenerateMock<IRegistrationRepository>();
+
+        }
+
+        private IRegistrationService GetSubjectUnderTest()
+        {
+			return new RegistrationService(_feeCalculator,_paymentProcessor,_repository,_emailSender);
+        }
 
 		[Test]
 		public void MethodName_StateUnderTest_ExpectedBehavior()

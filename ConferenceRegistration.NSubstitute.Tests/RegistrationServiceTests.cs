@@ -8,9 +8,10 @@ namespace ConferenceRegistration.NSubstitute.Tests
 	[TestFixture]
 	class RegistrationServiceTests
 	{
-		IFeeCalculator _feeCalculator;
-		IEmailSender _emailSender;
-		IPaymentProcessor _paymentProcessor;
+		private IFeeCalculator _feeCalculator;
+		private IEmailSender _emailSender;
+		private IPaymentProcessor _paymentProcessor;
+        private IRegistrationRepository _repository;
 
 		[OneTimeSetUp]
 		public void FixtureSetup()
@@ -30,7 +31,14 @@ namespace ConferenceRegistration.NSubstitute.Tests
 
 			//we will define return values in each test for this stub.
 			_paymentProcessor = Substitute.For<IPaymentProcessor>();
-		}
+
+            _repository = Substitute.For<IRegistrationRepository>();
+        }
+
+        public IRegistrationService GetSubjectUnderTest()
+        {
+			return new RegistrationService(_feeCalculator, _paymentProcessor,_repository, _emailSender);
+        }
 
 		[Test]
 		public void MethodName_StateUnderTest_ExpectedBehavior()
@@ -50,13 +58,11 @@ namespace ConferenceRegistration.NSubstitute.Tests
 			//setup the paymentProcessor to return true
 			_paymentProcessor.Process().Returns(true);
 
-			//create the mock for the repository.  After we need to setup what we expect to be called on the mock.
-			IRegistrationRepository repository = Substitute.For<IRegistrationRepository>();
 
-			RegistrationService registrationService = new RegistrationService(_feeCalculator, _paymentProcessor, repository, _emailSender);
+            var registrationService = GetSubjectUnderTest();
 			registrationService.RegisterForConference("Joe", "Smith", "joe.smith@abc.com");
 
-			repository.ReceivedWithAnyArgs().SaveRegistration(null);
+			_repository.ReceivedWithAnyArgs().SaveRegistration(null);
 		}
 
 		[Test]
@@ -65,9 +71,7 @@ namespace ConferenceRegistration.NSubstitute.Tests
 			//setup payment processor to return false so that we can test that an exception is thrown when processing fails 
 			_paymentProcessor.Process().Returns(false);
 
-			IRegistrationRepository repo = Substitute.For<IRegistrationRepository>();
-
-			RegistrationService registrationService = new RegistrationService(_feeCalculator, _paymentProcessor, repo, _emailSender);
+            var registrationService = GetSubjectUnderTest();
 			Assert.Throws<ApplicationException>(() => registrationService.RegisterForConference("Joe", "smith", "joe.smith@abc.com"));
 		}
 
@@ -77,18 +81,15 @@ namespace ConferenceRegistration.NSubstitute.Tests
 			//This shows creating more than one mock and establishing more than one expectation that will be verified
 			_paymentProcessor.Process().Returns(true);
 
-			//create mocks for both repository and emailSender
-			IRegistrationRepository repository = Substitute.For<IRegistrationRepository>();
-			IEmailSender emailSender = Substitute.For<IEmailSender>();
 
-			RegistrationService registrationService = new RegistrationService(_feeCalculator, _paymentProcessor, repository, emailSender);
+            var registrationService = GetSubjectUnderTest();
 			registrationService.RegisterForConference("Joe", "Smith", "joe.smith@abc.com");
 
 			//change the order of the statements below to see the effects on the test
 			Received.InOrder(() =>
 			{
-				repository.SaveRegistration(Arg.Any<RegistrationEntity>());
-				emailSender.SendMail(Arg.Any<MailMessage>());
+				_repository.SaveRegistration(Arg.Any<RegistrationEntity>());
+				_emailSender.SendMail(Arg.Any<MailMessage>());
 			});
 		}
 	}

@@ -5,7 +5,8 @@ using System.Net.Mail;
 using System.Text;
 
 namespace ConferenceRegistration {
-	public class RegistrationService {
+	public class RegistrationService : IRegistrationService
+    {
         private readonly IFeeCalculator _feeCalculator;
         private readonly IPaymentProcessor _paymentProcessor;
         private readonly IRegistrationRepository _repository;

@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Unity;
 
 namespace ConferenceRegistration.RhinoMocks.Tests {
 	[TestFixture]
