@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net.Mail;
-using Microsoft.Practices.Unity;
 using Moq;
 using NUnit.Framework;
+using Unity;
 
 namespace ConferenceRegistration.Moq.Tests
 {
