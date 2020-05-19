@@ -79,7 +79,7 @@ namespace ConferenceRegistration.Moq.Tests
 		}
 
 		[Test]
-		public void RegisterForConference_PaymentProcessingSuccedes_VerifyRepositoryAndEmailServiceCalled()
+		public void RegisterForConference_PaymentProcessingSucceeds_VerifyRepositoryAndEmailServiceCalled()
 		{
 			//This shows creating more than one mock and establishing more than one expection that will be verified
 			_paymentProcessor.Setup(f => f.Process()).Returns(true);

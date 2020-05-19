@@ -6,10 +6,10 @@ using System.Text;
 
 namespace ConferenceRegistration {
 	public class RegistrationService {
-		IFeeCalculator _feeCalculator;
-		IPaymentProcessor _paymentProcessor;
-		IRegistrationRepository _repository;
-		IEmailSender _emailSender;
+        private readonly IFeeCalculator _feeCalculator;
+        private readonly IPaymentProcessor _paymentProcessor;
+        private readonly IRegistrationRepository _repository;
+        private readonly IEmailSender _emailSender;
 
 		public RegistrationService(IFeeCalculator feeCalculator, IPaymentProcessor paymentProcessor, IRegistrationRepository repository, IEmailSender emailSender) {
 			_feeCalculator = feeCalculator;
@@ -20,7 +20,7 @@ namespace ConferenceRegistration {
 
 		public void RegisterForConference(string firstName, string lastName, string emailAddress) {
 			//create new entity
-			RegistrationEntity entity = new RegistrationEntity() { EmailAddress = emailAddress, FirstName = firstName, LastName = lastName };
+			var entity = new RegistrationEntity() { EmailAddress = emailAddress, FirstName = firstName, LastName = lastName };
 
 			//calculate the fee
 			entity.InvoiceAmount = _feeCalculator.CalculateFee();

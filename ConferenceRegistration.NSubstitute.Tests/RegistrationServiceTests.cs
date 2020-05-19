@@ -72,7 +72,7 @@ namespace ConferenceRegistration.NSubstitute.Tests
 		}
 
 		[Test]
-		public void RegisterForConference_PaymentProcessingSuccedes_VerifyRepositoryAndEmailServiceCalled()
+		public void RegisterForConference_PaymentProcessingSucceeds_VerifyRepositoryAndEmailServiceCalled()
 		{
 			//This shows creating more than one mock and establishing more than one expectation that will be verified
 			_paymentProcessor.Process().Returns(true);
