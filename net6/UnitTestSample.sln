@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialMockExample", "Parti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialMockExample.NSubstitute.Tests", "PartialMockExample.NSubstitute.Tests\PartialMockExample.NSubstitute.Tests.csproj", "{5AE3E533-4F2D-4C04-8EDB-B7665F9E37B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRegistration.XUnit.Tests", "ConferenceRegistration.XUnit.Tests\ConferenceRegistration.XUnit.Tests.csproj", "{92187F7A-A521-49F1-85BB-656A178D3F85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{5AE3E533-4F2D-4C04-8EDB-B7665F9E37B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AE3E533-4F2D-4C04-8EDB-B7665F9E37B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AE3E533-4F2D-4C04-8EDB-B7665F9E37B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92187F7A-A521-49F1-85BB-656A178D3F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92187F7A-A521-49F1-85BB-656A178D3F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92187F7A-A521-49F1-85BB-656A178D3F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92187F7A-A521-49F1-85BB-656A178D3F85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
