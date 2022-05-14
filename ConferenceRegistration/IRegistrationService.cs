@@ -1,7 +1,5 @@
-﻿namespace ConferenceRegistration
-{
-    public interface IRegistrationService
-    {
-        void RegisterForConference(string firstName, string lastName, string emailAddress);
-    }
+﻿namespace ConferenceRegistration {
+	public interface IRegistrationService {
+		void RegisterForConference(string firstName, string lastName, string emailAddress);
+	}
 }

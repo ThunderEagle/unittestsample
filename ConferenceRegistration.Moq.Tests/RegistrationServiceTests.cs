@@ -3,25 +3,16 @@ using System.Net.Mail;
 using Moq;
 using NUnit.Framework;
 
-namespace ConferenceRegistration.Moq.Tests
-{
+namespace ConferenceRegistration.Moq.Tests {
 	[TestFixture]
-	class RegistrationServiceTests
-	{
-		private Mock<IFeeCalculator> _feeCalculator;
-		private Mock<IEmailSender> _emailSender;
-		private Mock<IPaymentProcessor> _paymentProcessor;
-        private Mock<IRegistrationRepository> _registrationRepository;
-
+	internal class RegistrationServiceTests {
 		[OneTimeSetUp]
-		public void FixtureSetup()
-		{
+		public void FixtureSetup() {
 			//called once before any tests are ran
 		}
 
 		[SetUp]
-		public void Setup()
-		{
+		public void Setup() {
 			//called before every test is ran
 
 			_feeCalculator = new Mock<IFeeCalculator>();
@@ -36,57 +27,57 @@ namespace ConferenceRegistration.Moq.Tests
 			_registrationRepository = new Mock<IRegistrationRepository>(MockBehavior.Strict);
 		}
 
-        private IRegistrationService GetSubjectUnderTest()
-        {
+		private Mock<IFeeCalculator> _feeCalculator;
+		private Mock<IEmailSender> _emailSender;
+		private Mock<IPaymentProcessor> _paymentProcessor;
+		private Mock<IRegistrationRepository> _registrationRepository;
+
+		private IRegistrationService GetSubjectUnderTest() {
 			return new RegistrationService(_feeCalculator.Object, _paymentProcessor.Object, _registrationRepository.Object, _emailSender.Object);
-        }
+		}
 
 		[Test]
-		public void MethodName_StateUnderTest_ExpectedBehavior()
-		{
+		public void MethodName_StateUnderTest_ExpectedBehavior() {
 			//The SetupSequence is used to establish different return values in order for multiple calls to the Mock
 			_paymentProcessor.SetupSequence(f => f.Process())
-				.Returns(true)
-				.Returns(false);
+			                 .Returns(true)
+			                 .Returns(false);
 
-			bool first = _paymentProcessor.Object.Process();
+			var first = _paymentProcessor.Object.Process();
 			Assert.IsTrue(first);
-			bool second = _paymentProcessor.Object.Process();
+			var second = _paymentProcessor.Object.Process();
 			Assert.IsFalse(second);
 		}
 
 		[Test]
-		public void RegisterForConference_PaymentProcessingSucceeds_EntitySaved()
-		{
+		public void RegisterForConference_PaymentProcessingSucceeds_EntitySaved() {
 			//setup the paymentProcessor to return true
 			_paymentProcessor.Setup(f => f.Process()).Returns(true);
 
 			//we need to setup what we expect to be called on the mock.
 			_registrationRepository.Setup(e => e.SaveRegistration(It.IsAny<RegistrationEntity>()));
 
-            var registrationService = GetSubjectUnderTest();
+			var registrationService = GetSubjectUnderTest();
 			registrationService.RegisterForConference("Joe", "Smith", "joe.smith@abc.com");
 
-            _registrationRepository.VerifyAll();
+			_registrationRepository.VerifyAll();
 		}
 
 		[Test]
-		public void RegisterForConference_PaymentProcessingFails_ThrowsException()
-		{
+		public void RegisterForConference_PaymentProcessingFails_ThrowsException() {
 			//setup payment processor to return false so that we can test that an exception is thrown when processing fails 
 			_paymentProcessor.Setup(f => f.Process()).Returns(false);
-            var registrationService = GetSubjectUnderTest();
+			var registrationService = GetSubjectUnderTest();
 			Assert.Throws<ApplicationException>(() => registrationService.RegisterForConference("Joe", "smith", "joe.smith@abc.com"));
 		}
 
 		[Test]
-		public void RegisterForConference_PaymentProcessingSucceeds_VerifyRepositoryAndEmailServiceCalled()
-		{
+		public void RegisterForConference_PaymentProcessingSucceeds_VerifyRepositoryAndEmailServiceCalled() {
 			//This shows creating more than one mock and establishing more than one expectation that will be verified
 			_paymentProcessor.Setup(f => f.Process()).Returns(true);
 
 			//create a repository so that a batch record and verify can be done
-			MockRepository mockRepository = new MockRepository(MockBehavior.Strict);
+			var mockRepository = new MockRepository(MockBehavior.Strict);
 
 			//create mocks for both repository and emailSender
 			var repository = mockRepository.Create<IRegistrationRepository>();
